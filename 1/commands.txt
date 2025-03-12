@@ -1,0 +1,199 @@
+Explain what these commands do and write some usage examples for their most useful (important) options (at least 3).
+
+1. ls - will display the contents of the current directory
+	-l : known as a long format that displays detailed information about files and directories.
+	-a : Represent all files Include hidden files and directories in the listing.
+	-t : Sort files and directories by their last modification time, displaying the most recently modified ones first.
+	-r : known as reverse order which is used to reverse the default order of listing.
+	-R : List files and directories recursively, including subdirectories.
+
+2. pwd :  prints the full name (the full path) of current/working directory
+	-L : Prints the current working directory, following symbolic links (logical path).
+	-P : Prints the actual physical directory, resolving any symbolic links (physical path).
+
+3. cat : is used to view file contents, combine files, and create new files.
+	-n : displays line numbers in the output.
+	-b : Similar to -n, but only numbers non-empty lines.
+	> new_file_name : Creates an empty file or overwrites an existing one.
+
+4. find : search for files and directories based on various criteria such as name, size, type, and modification time.
+	- /directory_name name "name.txt": Searches for name.txt in the /directory_name directory and its subdirectories
+	- /directory_name -type f :  Find all files of type f in the /directory_name directory
+	- size the_size (e. g. find / - size +100M) : Finds files larger than the_size 
+
+
+5. more : Displays file contents one screen at a time.
+	-c : Prevents the screen from scrolling, which makes text easier to read as the more command writes to the screen
+	-e : Exits automatically after displaying the last line of the last file.
+	-d : Prints a message, appended to the More prompt at the bottom of the screen, about which keys continue, quit, and provide help for the more command.
+
+
+6. less : a terminal pager program used to view (but not change) the contents of a text file one screen at a time
+	-f : Force non-regular files to be opened.
+	-E : Automatically exit when reaching the end of the file.
+	-G : Highlight the string that was found by the last search command.
+
+7. rm : remove objects such as files, directories, symbolic links and so on
+	-r my_directory : Recursively, deletes the directory my_directory and all its files/subdirectories.
+	-f text.txt : With force, delete text.txt without asking for confirmation
+	-i text.txt : Interactive mode: Asks before each deletion
+
+8. mkdir : create new directories
+	-p : Creates parent directories if they don't exist.
+	-v : Displays a message for each created directory.
+	--version : Displays the version number and information about the license and exits
+
+9. cp : copying files from one location to another. This command can also copy directories
+	-r : Recursive copy: Copy directories and their contents
+	-i : Interactive mode: Asks before overwriting files
+	-u : Update: Copy only if the source file is newer
+
+10. mv
+Explanation: Moves files from one location to another or renames them.
+Examples of options:
+mv -i source.txt destination/ → Asks for confirmation before overwriting.
+mv -n file1.txt file2.txt → Does not overwrite the destination file if it exists.
+mv -v file1.txt dir/ → Displays details about the move operation.
+
+11. cd
+Explanation: Allows navigation between directories.
+Examples of options:
+cd /home/user/Documents → Moves to a specific directory.
+cd ~ → Moves directly to the user’s home directory.
+cd - → Returns to the previous directory.
+
+12. chmod
+Explanation: Modifies read, write, and execute permissions for users.
+Examples of options:
+chmod +x script.sh → Adds execute permission to the file.
+chmod 644 file.txt → Owner can read and write, others can only read.
+chmod -R 755 folder/ → Applies permissions recursively to all files and directories inside.
+
+13. ln
+Explanation: Creates symbolic or hard links between files.
+Examples of options:
+ln file1.txt file2.txt → Creates a hard link.
+ln -s /path/to/file linkname → Creates a symbolic (soft) link.
+ln -f file1.txt file2.txt → Forces the creation of a new link, removing an existing one.
+
+14. touch
+Explanation: Creates new empty files or updates the last access timestamp.
+Examples of options:
+touch newfile.txt → Creates a new file if it doesn’t exist.
+touch -c file.txt → Does not create the file if it doesn’t exist.
+touch -t 202403101200 file.txt → Sets the timestamp to March 10, 2024, 12:00.
+
+15. chown
+Explanation: Changes the user and group that own a file.
+Examples of options:
+chown user1 file.txt → Changes the file owner.
+chown user1:group1 file.txt → Changes both the owner and group.
+chown -R user1:group1 folder/ → Applies changes recursively to all files in a folder.
+
+16. wc
+Explanation: Displays the number of lines, words, and characters in a file.
+Examples of options:
+wc -l file.txt → Displays only the number of lines.
+wc -w file.txt → Displays the number of words.
+wc -c file.txt → Displays the number of characters (bytes).
+
+17. head
+Explanation: Shows the first lines of a file.
+Examples of options:
+head file.txt → Displays the first 10 lines (default).
+head -n 20 file.txt → Displays the first 20 lines.
+head -c 100 file.txt → Displays the first 100 bytes.
+
+18. diff
+Explanation: Compares two files line by line and shows the differences.
+Examples of options:
+diff file1.txt file2.txt → Compares two files and displays differences.
+diff -u file1.txt file2.txt → Displays differences in a readable format (unified diff).
+diff -r dir1/ dir2/ → Recursively compares two directories.
+
+19. tail - displays the last part of a file - defalt lines
+    - +n - start printing from the nth (byte/line)
+    - -n - prints last n (bytes/lines)
+    - c - bytes, tail -c -10 file.txt will print the last 10 bytes of file.txt 
+                 tail -c +10 file.txt will print the file starting from the 10th byte
+    - f - follow, tail -f file.txt will print the file whenever its modified
+    - r - reverse, tail -r file.txt will print the file in reverse order
+
+20. echo - prints the string that is passed as an argument followed by "\n"
+    - n - does not add "\n"
+    - can also be used to pipe the output of a command to another command
+    - can also be used to redirect the output to a file using ">" or ">>"
+
+21. shift - shifts the positional parameters to the left by n positions
+    - if n is not provided, it will shift by 1
+    - useful in scripts to shift the arguments passed to the script
+    - eg. you pass the arguments A1 A2 A3 A4 coresponding to $1 $2 $3 $4
+    - after shift you will have A2 A3 A4 in $1 $2 $3
+    
+22. test - evaluates an expression and returns either 0 (true) or 1 (false)
+    - e - check if the file exists
+    - d - check if the file exists and is a directory
+    - f - check if the file exists and is a regular file
+
+23. expr - evaluates an expression
+    - e1 | e2 - returns e1 if not zero, otherwise returns e2
+    - e1 & e2 - returns e1 if neither is zero, otherwise returns zero
+    - e1 { =, >, >=, <, <=, !=} e2 - compares integers or strings
+    - e1 { +, -, *, /, %} e2 - performs arithmetic operations if they are integers
+
+24. sleep - suspends exection for a specified amount of time
+    - ns - sleep for n seconds
+    - nm - sleep for n minutes
+    - nh - sleep for n hours
+    - nd - sleep for n days
+    - eg. (sleep 1m; echo "done")& will sleep for 1 minute and then print "done" in the background
+
+25. exit - terminates the process
+    - n - exit with status n (default 0)
+    - eg. exit 1 will exit the shell with status 1
+
+26. netstat - displays content related to different network things
+    - a - shows all network connections
+    - t - shows tcp connections
+    - u - shows udp connections
+
+27. ping - sends out ICMP (Internet Control Message Protocol) echo request packets to the target host and waits for echo replies
+    - a - generates a sound when the peer can be reached
+    - c [count] - limits the number of ping requests sent to the target
+    - i [interval] - sets the time (in seconds) to wait between sending ping requests
+    - n - displays only numeric output (IP addresses instead of hostnames)
+
+28. host - used to find the IP address of a particular domain name or if you want to find out the domain name of a particular IP address
+    - v - enables verbose output
+    - t - specifies the query type
+
+29. ftp -  is a network protocol used for transferring files from one computer system to another
+    - 4 - use only IPv4
+    - 6 - use only IPv6
+    - p - uses passive mode for data transfers, allowing you to use FTP despite a firewall that might prevent it
+    - i - turns off interactive prompting during multiple file transfers
+
+30. ftpwho - is a useful tool for system administrators to keep track of who is connected to the FTP server and what they are doing
+    - a - show only active connections
+    - i - show only idle connections
+    - u USER - show connections for a specific user
+    - H HOST - show connections for a specific host
+
+31. df -  is a utility that displays information about the file system, including the total size, used space, and available space of each file system
+    - h - display the disk usage information for all mounted file systems on your system
+    - T - display the file system type for each file system
+    - i - display the total number of inodes, used inodes, and available inodes for each file system
+
+32. uptime - displays the current time, how long the system has been running, the number of users currently logged in, and the system load averages for the past 1, 5, and 15 minutes
+    - p - displays the uptime in a more human-readable format
+    - s - displays the system boot time in the format of a timestamp
+    - h - display help menu
+    - v -  output version information
+
+33. mail - is a utility that enables users to send and receive emails via the command line
+    - A [file_path] - attaches a file to the email
+    - a=[header] - allows users to append the specified message to the email
+    - s "subject" - used to specify the email subject on the command line. Encase the subject in double quotes
+    - d - Outputs various information useful for debugging
+
+34. clear - used to clear the terminal screen
